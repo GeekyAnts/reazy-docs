@@ -5,7 +5,7 @@ const spawnSync = require('child_process').spawnSync;
 var options = {
   hostname: 'api.github.com',
   port: 443,
-  path: '/repos/GeekyAnts/native-base-v2-docs/branches',
+  path: '/repos/GeekyAnts/reazy-docs/branches',
   method: 'GET',
   headers: {
     'User-Agent': 'Mozilla /5.0 (Compatible MSIE 9.0;Windows NT 6.1;WOW64; Trident/5.0)',
@@ -19,20 +19,27 @@ var populateBookJson = (branches) => {
 
   const bookJsonContents = require('./book.json');
 
-  bookJsonContents.pluginsConfig.versions.options = [{
-      value: '#',
-      text: '-- select version --',
-      selected: true
-  }];
+  bookJsonContents.pluginsConfig.versions.options = [];
 
   for(let i=0; i<branches.length; i++) {
-    // if(branches[i].name !== 'master') {
+    if(branches[i].name === 'master') {
       bookJsonContents.pluginsConfig.versions.options.push({
-          value: 'http://rawgit.com/GeekyAnts/native-base-v2-docs/' + branches[i].name + '/_book/index.html',
+          value: 'http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html',
+          text: 'latest'
+      });
+    } else {
+      bookJsonContents.pluginsConfig.versions.options.push({
+          value: 'http://rawgit.com/GeekyAnts/reazy-docs/' + branches[i].name + '/_book/index.html',
           text: branches[i].name
       });
-    // }
+    }
   }
+
+  bookJsonContents.pluginsConfig.versions.options.push({
+    value: 'http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html',
+    text: '-- select version --',
+    selected: false
+  });
 
   fs.writeFileSync(__dirname + '/book.json', JSON.stringify(bookJsonContents, null, 4), {encoding: 'utf8'});
 
