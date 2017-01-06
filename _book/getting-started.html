@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Getting started · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -61,8 +61,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="why-reazy.html" />
     
+    <link rel="prev" href="why-reazy.html" />
     
 
     </head>
@@ -91,7 +91,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -117,7 +117,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="getting-started.html">
+        <li class="chapter active" data-level="1.3" data-path="getting-started.html">
             
                 <a href="getting-started.html">
             
@@ -160,7 +160,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Getting started</a>
     </h1>
 </div>
 
@@ -175,12 +175,45 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="reazy">Reazy</h1>
-<h3 id="a-simple-services-based-framework-for-react-and-react-native">A simple services-based framework for React and React Native.</h3>
-<p>Reazy is a bare bones pluggable framework which helps you get started with your React and React Native project quickly. It is a service-based framework inspired from <a href="http://feathersjs.com/" target="_blank">FeathersJS</a>.</p>
-<p>This guide will walk you through everything you need to know about Reazy to create your mobile and web apps.</p>
-<p><a href="getting-started.html">Create your first Reazy app</a></p>
-<p>Note: Examples are only available for React Native. React version will be added soon.</p>
+                                <h1 id="getting-started">Getting started</h1>
+<p>Install Reazy cli</p>
+<pre><code class="lang-sh">$ npm install --save reazy-cli
+</code></pre>
+<p>Create a new directory </p>
+<pre><code class="lang-sh">$ mkdir my-reazy-app
+$ <span class="hljs-built_in">cd</span> my-reazy-app
+</code></pre>
+<p>Generate the app</p>
+<pre><code class="lang-sh">$ reazy generate
+</code></pre>
+<p>This will generate a very basic app with a couple of services</p>
+<p>Run the app</p>
+<pre><code class="lang-sh">$ reazy run-ios
+$ reazy run-android
+</code></pre>
+<p>Now, let&apos;s add a new service <code>reazy-auth</code> which is available as a reazy plugin.</p>
+<pre><code class="lang-sh">$ npm install --save reazy-auth
+</code></pre>
+<p>Open <code>src/app.js</code>.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> reazy <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy&apos;</span>;
+<span class="hljs-keyword">import</span> config <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy-native-config&apos;</span>;
+<span class="hljs-keyword">import</span> auth <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy-auth&apos;</span>;
+<span class="hljs-keyword">import</span> reactNative <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./services/react-native&apos;</span>;
+
+<span class="hljs-keyword">const</span> app = reazy();
+
+app.use(config(), <span class="hljs-string">&apos;config&apos;</span>);
+app.use(auth(), <span class="hljs-string">&apos;auth&apos;</span>);
+app.use(reactNative(), <span class="hljs-string">&apos;reactNative&apos;</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> app;
+</code></pre>
+<p><code>app.use(service(), &apos;serviceName&apos;)</code> creates a service instance and adds it to your app instance with name <code>serviceName</code>.</p>
+<p>The service instance can then be accessed like this:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> auth = app.get(<span class="hljs-string">&apos;auth&apos;</span>);
+auth.setUser({name: <span class="hljs-string">&apos;User&apos;</span>, email: <span class="hljs-string">&apos;user@reazyframework.io&apos;</span>});
+<span class="hljs-keyword">const</span> user = auth.user();
+</code></pre>
 
                                 
                                 </section>
@@ -208,10 +241,10 @@
 
             
                 
-                
-                <a href="why-reazy.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Why Reazy">
-                    <i class="fa fa-angle-right"></i>
+                <a href="why-reazy.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Why Reazy">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -220,7 +253,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Why Reazy","level":"1.2","depth":1,"path":"why-reazy.md","ref":"why-reazy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["versions"],"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"latest"},{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"-- select version --","selected":false}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-01-06T13:07:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-06T15:00:53.920Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting started","level":"1.3","depth":1,"previous":{"title":"Why Reazy","level":"1.2","depth":1,"path":"why-reazy.md","ref":"why-reazy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["versions"],"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"latest"},{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"-- select version --","selected":false}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"getting-started.md","mtime":"2017-01-06T14:59:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-06T15:00:53.920Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
