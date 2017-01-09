@@ -24,7 +24,7 @@ var populateBookJson = (branches) => {
   for(let i=0; i<branches.length; i++) {
     if(branches[i].name === 'master') {
       bookJsonContents.pluginsConfig.versions.options.push({
-          value: 'http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html',
+          value: 'http://docs.reazyframework.io/',
           text: 'latest'
       });
     } else {
@@ -36,7 +36,7 @@ var populateBookJson = (branches) => {
   }
 
   bookJsonContents.pluginsConfig.versions.options.push({
-    value: 'http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html',
+    value: 'http://docs.reazyframework.io/',
     text: '-- select version --',
     selected: false
   });

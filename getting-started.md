@@ -5,15 +5,9 @@ Install Reazy cli
 $ npm install --save reazy-cli
 ```
 
-Create a new directory 
-```sh
-$ mkdir my-reazy-app
-$ cd my-reazy-app
-```
-
 Generate the app
 ```sh
-$ reazy generate
+$ reazy generate my-reazy-app
 ```
 This will generate a very basic app with a couple of services
 
@@ -52,3 +46,10 @@ const auth = app.get('auth');
 auth.setUser({name: 'User', email: 'user@reazyframework.io'});
 const user = auth.user();
 ```
+
+You can also generate your own service and use it in the same way as above.
+```sh
+$ reazy generate service
+```
+
+Now that we are done with the basic usage, let's dive into the details.

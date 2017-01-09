@@ -61,6 +61,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="services.html" />
+    
     
     <link rel="prev" href="why-reazy.html" />
     
@@ -130,6 +132,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4" data-path="services.html">
+            
+                <a href="services.html">
+            
+                    
+                    Services
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -179,12 +194,8 @@
 <p>Install Reazy cli</p>
 <pre><code class="lang-sh">$ npm install --save reazy-cli
 </code></pre>
-<p>Create a new directory </p>
-<pre><code class="lang-sh">$ mkdir my-reazy-app
-$ <span class="hljs-built_in">cd</span> my-reazy-app
-</code></pre>
 <p>Generate the app</p>
-<pre><code class="lang-sh">$ reazy generate
+<pre><code class="lang-sh">$ reazy generate my-reazy-app
 </code></pre>
 <p>This will generate a very basic app with a couple of services</p>
 <p>Run the app</p>
@@ -214,6 +225,10 @@ app.use(reactNative(), <span class="hljs-string">&apos;reactNative&apos;</span>)
 auth.setUser({name: <span class="hljs-string">&apos;User&apos;</span>, email: <span class="hljs-string">&apos;user@reazyframework.io&apos;</span>});
 <span class="hljs-keyword">const</span> user = auth.user();
 </code></pre>
+<p>You can also generate your own service and use it in the same way as above.</p>
+<pre><code class="lang-sh">$ reazy generate service
+</code></pre>
+<p>Now that we are done with the basic usage, let&apos;s dive into the details.</p>
 
                                 
                                 </section>
@@ -241,10 +256,14 @@ auth.setUser({name: <span class="hljs-string">&apos;User&apos;</span>, email: <s
 
             
                 
-                <a href="why-reazy.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Why Reazy">
+                <a href="why-reazy.html" class="navigation navigation-prev " aria-label="Previous page: Why Reazy">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="services.html" class="navigation navigation-next " aria-label="Next page: Services">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -253,7 +272,7 @@ auth.setUser({name: <span class="hljs-string">&apos;User&apos;</span>, email: <s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting started","level":"1.3","depth":1,"previous":{"title":"Why Reazy","level":"1.2","depth":1,"path":"why-reazy.md","ref":"why-reazy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["versions"],"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"latest"},{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"-- select version --","selected":false}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"getting-started.md","mtime":"2017-01-06T14:59:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-06T15:00:53.920Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting started","level":"1.3","depth":1,"next":{"title":"Services","level":"1.4","depth":1,"path":"services.md","ref":"services.md","articles":[]},"previous":{"title":"Why Reazy","level":"1.2","depth":1,"path":"why-reazy.md","ref":"why-reazy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["versions","livereload"],"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"latest"},{"value":"http://rawgit.com/GeekyAnts/reazy-docs/master/_book/index.html","text":"-- select version --","selected":false}]},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"getting-started.md","mtime":"2017-01-09T13:14:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-06T17:33:06.691Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -264,6 +283,10 @@ auth.setUser({name: <span class="hljs-string">&apos;User&apos;</span>, email: <s
     
         
         <script src="gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
