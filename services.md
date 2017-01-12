@@ -1,1 +1,0 @@
-Services are the heart of every Reazy application. They can 

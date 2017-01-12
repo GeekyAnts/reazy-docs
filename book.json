@@ -17,5 +17,10 @@
                 }
             ]
         }
+    },
+    "links": {
+        "custom": {
+            "Custom link name": "https://customlink.com"
+        }
     }
 }
