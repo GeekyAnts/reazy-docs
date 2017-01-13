@@ -1,5 +1,6 @@
 {
     "plugins": [
+        "ga",
         "versions"
     ],
     "pluginsConfig": {
@@ -7,15 +8,18 @@
             "gitbookConfigURL": "http://rawgit.com/GeekyAnts/reazy-docs/master/book.json",
             "options": [
                 {
-                    "value": "http://docs.reazyframework.io/",
+                    "value": "http://docs.reazyframework.io",
                     "text": "latest"
                 },
                 {
-                    "value": "http://docs.reazyframework.io/",
+                    "value": "http://docs.reazyframework.io",
                     "text": "-- select version --",
                     "selected": false
                 }
             ]
+        },
+        "ga": {
+            "token": "UA-87152834-1"
         }
     },
     "links": {
