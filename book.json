@@ -3,6 +3,7 @@
         "ga",
         "versions"
     ],
+    "title": "Reazy",
     "pluginsConfig": {
         "versions": {
             "gitbookConfigURL": "http://rawgit.com/GeekyAnts/reazy-docs/master/book.json",
