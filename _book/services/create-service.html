@@ -285,12 +285,11 @@
 
 app.use(myName, <span class="hljs-string">&apos;myName&apos;</span>);
 </code></pre>
-<p>Your service might be dependent on another service or other data that you want to pass down to the service during intialization. To do this, you need to wrap your service function inside a parent function.
-<code>src/services/my-name/index.js</code></p>
-<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">http</span>) </span>{
+<p>Your service might need some configuration before initialization. To do this, you need to wrap your service function inside a <a href="https://www.sitepoint.com/higher-order-functions-javascript/#returning-functions-as-results" target="_blank">higher-order function</a> and call that higher-order function in your <code>app.use</code>.</p>
+<p><code>src/services/my-name/index.js</code></p>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">serviceName</span>) </span>{
-    <span class="hljs-keyword">const</span> name = http.request(<span class="hljs-string">&apos;get/my/name&apos;</span>);
-    <span class="hljs-keyword">return</span> name;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> <span class="hljs-subst">${config.lastName}</span>`</span>;
   }
 }
 </code></pre>
@@ -298,24 +297,26 @@ app.use(myName, <span class="hljs-string">&apos;myName&apos;</span>);
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> http <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy-http&apos;</span>;
 <span class="hljs-keyword">import</span> myName <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;src/services/my-name&apos;</span>;
 
-app.use(myName(http), <span class="hljs-string">&apos;myName&apos;</span>);
+app.use(myName({lastName: <span class="hljs-string">&apos;Satija&apos;</span>}), <span class="hljs-string">&apos;myName&apos;</span>);
 </code></pre>
 <p>Reazy calls the service function with <code>this</code> reference set to app instance. Therefore, you can get the app instance in your service</p>
 <pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">http</span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">serviceName</span>) </span>{
     <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">this</span>;
-    <span class="hljs-keyword">const</span> name = http.request(<span class="hljs-string">&apos;get/my/name&apos;</span>);
-    app[serviceName] = name;
 
-    <span class="hljs-keyword">return</span> name;
+    app[serviceName] = <span class="hljs-string">`<span class="hljs-subst">${name}</span> <span class="hljs-subst">${config.lastName}</span>`</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${name}</span> <span class="hljs-subst">${config.lastName}</span>`</span>;
   }
 }
 </code></pre>
 <p>Now you can access <code>myName</code> service in two ways</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> name = app.get(<span class="hljs-string">&apos;myName&apos;</span>);
+<span class="hljs-comment">// Himanshu Satija</span>
 </code></pre>
 <p>or</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> name = app.myName;
+<span class="hljs-comment">// Himanshu Satija</span>
 </code></pre>
 <p><strong>Note:</strong> To prevent name collision of services, <code>serviceName</code> is provided as a parameter to the service function. Whenever your service is modifying app instance, it is recommended that you do add a serviceName property to <code>app</code> and do all the modifications inside that.</p>
 
@@ -361,7 +362,7 @@ app.use(myName(http), <span class="hljs-string">&apos;myName&apos;</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Create a service","level":"1.7.1","depth":2,"next":{"title":"Stores","level":"1.8","depth":1,"path":"stores/readme.md","ref":"stores/readme.md","articles":[]},"previous":{"title":"Services","level":"1.7","depth":1,"path":"services/readme.md","ref":"services/readme.md","articles":[{"title":"Create a service","level":"1.7.1","depth":2,"path":"services/create-service.md","ref":"services/create-service.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"services/create-service.md","mtime":"2017-02-02T11:09:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T13:11:09.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create a service","level":"1.7.1","depth":2,"next":{"title":"Stores","level":"1.8","depth":1,"path":"stores/readme.md","ref":"stores/readme.md","articles":[]},"previous":{"title":"Services","level":"1.7","depth":1,"path":"services/readme.md","ref":"services/readme.md","articles":[{"title":"Create a service","level":"1.7.1","depth":2,"path":"services/create-service.md","ref":"services/create-service.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"services/create-service.md","mtime":"2017-02-14T14:16:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T14:17:30.806Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -11,8 +11,8 @@ React is a library to build user interfaces. But that's not enough to build an a
   - Base API path
   - Public key for third party libs
 - Run test cases
-- Internationalization and localization
-- Push notifications
+- Handle internationalization and localization
+- Handle push notifications
 
 Although we have libraries available for everything, we often struggle with making decisions about the structure of the project and configuration of libraries by following their docs.
 

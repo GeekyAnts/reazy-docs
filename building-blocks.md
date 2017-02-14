@@ -7,28 +7,40 @@ To understand the building blocks better, let's look at the generated folder str
 ```
 ├── .env
 ├── .env.example
+├── index.android.js
+├── index.ios.js
 ├── package.json
 ├── android
 ├── ios
-├── index.android.js
-├── index.ios.js
 └── src
     ├── app.js
+    ├── cli.js
+    ├── commands
+    │   └── example.js
     ├── components
     │   ├── Home
+    │   │   └── index.js
+    │   ├── Login
     │   │   └── index.js
     │   └── Routes.js
     ├── models
     ├── services
-    │   ├── react-native
+    │   ├── mobx
+    │   │   └── index.js
+    │   └── react-native
+    │       └── index.js
     └── stores
-        ├── domain
-        └── view
+        ├── domain
+        │   └── User.js
+        └── view
+            └── App.js
 ```
 
 ### Entry point
 
-`app.js` is the entry point of your app. Your Reazy app instance is created and all the services are initialized here.
+**App:** `app.js` is the entry point of your app. Your Reazy app instance is created and all the services are initialized here.
+
+**CLI:** `cli.js` is the entry point of your local cli. You can create your own commands and register them here.
 
 ### Components
 
@@ -40,6 +52,12 @@ The React Native app components will reside inside `src/components`.
 You can create a service for your app inside this folder. 
 
 Know more about services [here](services/readme.md).
+
+### Commands
+
+You can create your custom commands in `src/commands` and register them in `src/cli.js`. We are using [Vorpal](http://vorpal.js.org/) to create an interactive cli. An example is included with the generated project.
+
+`src
 
 ### Stores
 

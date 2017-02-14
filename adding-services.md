@@ -1,5 +1,8 @@
 # Adding services
 
+
+### Manual
+
 Let's add a new service `reazy-auth` which is available as a reazy plugin.
 ```sh 
 $ npm install --save reazy-auth
@@ -19,10 +22,12 @@ app.use(reactNative(), 'reactNative');
 export default app;
 ```
 
+### Using CLI
+
 Some services which are available as npm packages can be added using [reazy-cli](https://www.npmjs.com/package/reazy-cli).
 
 ```sh
-reazy add auth
+$ reazy add auth
 ```
 
 This command will install `reazy-auth` npm package and also add the above mentioned lines in your `app.js`.

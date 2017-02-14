@@ -268,31 +268,45 @@
 <h3 id="folder-structure">Folder structure</h3>
 <pre><code>&#x251C;&#x2500;&#x2500; .env
 &#x251C;&#x2500;&#x2500; .env.example
+&#x251C;&#x2500;&#x2500; index.android.js
+&#x251C;&#x2500;&#x2500; index.ios.js
 &#x251C;&#x2500;&#x2500; package.json
 &#x251C;&#x2500;&#x2500; android
 &#x251C;&#x2500;&#x2500; ios
-&#x251C;&#x2500;&#x2500; index.android.js
-&#x251C;&#x2500;&#x2500; index.ios.js
 &#x2514;&#x2500;&#x2500; src
     &#x251C;&#x2500;&#x2500; app.js
+    &#x251C;&#x2500;&#x2500; cli.js
+    &#x251C;&#x2500;&#x2500; commands
+    &#x2502;   &#x2514;&#x2500;&#x2500; example.js
     &#x251C;&#x2500;&#x2500; components
     &#x2502;   &#x251C;&#x2500;&#x2500; Home
+    &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; index.js
+    &#x2502;   &#x251C;&#x2500;&#x2500; Login
     &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; index.js
     &#x2502;   &#x2514;&#x2500;&#x2500; Routes.js
     &#x251C;&#x2500;&#x2500; models
     &#x251C;&#x2500;&#x2500; services
-    &#x2502;   &#x251C;&#x2500;&#x2500; react-native
+    &#x2502;   &#x251C;&#x2500;&#x2500; mobx
+    &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; index.js
+    &#x2502;   &#x2514;&#x2500;&#x2500; react-native
+    &#x2502;       &#x2514;&#x2500;&#x2500; index.js
     &#x2514;&#x2500;&#x2500; stores
         &#x251C;&#x2500;&#x2500; domain
+        &#x2502;   &#x2514;&#x2500;&#x2500; User.js
         &#x2514;&#x2500;&#x2500; view
+            &#x2514;&#x2500;&#x2500; App.js
 </code></pre><h3 id="entry-point">Entry point</h3>
-<p><code>app.js</code> is the entry point of your app. Your Reazy app instance is created and all the services are initialized here.</p>
+<p><strong>App:</strong> <code>app.js</code> is the entry point of your app. Your Reazy app instance is created and all the services are initialized here.</p>
+<p><strong>CLI:</strong> <code>cli.js</code> is the entry point of your local cli. You can create your own commands and register them here.</p>
 <h3 id="components">Components</h3>
 <p>The React Native app components will reside inside <code>src/components</code>.</p>
 <h3 id="services">Services</h3>
 <p><code>src/services</code> contains all the custom services of your app. By default, react-native will be there as a service.
 You can create a service for your app inside this folder. </p>
 <p>Know more about services <a href="services/readme.html">here</a>.</p>
+<h3 id="commands">Commands</h3>
+<p>You can create your custom commands in <code>src/commands</code> and register them in <code>src/cli.js</code>. We are using <a href="http://vorpal.js.org/" target="_blank">Vorpal</a> to create an interactive cli. An example is included with the generated project.</p>
+<p>`src</p>
 <h3 id="stores">Stores</h3>
 <p>For state management in a Reazy app, <a href="https://mobx.js.org/" target="_blank">MobX</a> is included by default.</p>
 <ul>
@@ -349,7 +363,7 @@ You can create a service for your app inside this folder. </p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building blocks","level":"1.5","depth":1,"next":{"title":"Adding services","level":"1.6","depth":1,"path":"adding-services.md","ref":"adding-services.md","articles":[]},"previous":{"title":"Getting started","level":"1.4","depth":1,"path":"getting-started.md","ref":"getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"building-blocks.md","mtime":"2017-02-14T13:09:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T13:11:09.043Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Building blocks","level":"1.5","depth":1,"next":{"title":"Adding services","level":"1.6","depth":1,"path":"adding-services.md","ref":"adding-services.md","articles":[]},"previous":{"title":"Getting started","level":"1.4","depth":1,"path":"getting-started.md","ref":"getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"building-blocks.md","mtime":"2017-02-14T13:59:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T14:17:30.806Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
