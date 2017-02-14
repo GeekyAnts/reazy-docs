@@ -37,7 +37,7 @@ The React Native app components will reside inside `src/components`.
 ### Services
 
 `src/services` contains all the custom services of your app. By default, react-native will be there as a service.
-`reazy generate service serviceName` will create a service for your app inside this folder. 
+You can create a service for your app inside this folder. 
 
 Know more about services [here](services/readme.md).
 

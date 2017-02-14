@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Building blocks · Reazy</title>
+        <title>Adding services · Reazy</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="adding-services.html" />
+    <link rel="next" href="services/readme.html" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="building-blocks.html" />
     
 
     </head>
@@ -147,7 +147,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="building-blocks.html">
+        <li class="chapter " data-level="1.5" data-path="building-blocks.html">
             
                 <a href="building-blocks.html">
             
@@ -160,7 +160,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="adding-services.html">
+        <li class="chapter active" data-level="1.6" data-path="adding-services.html">
             
                 <a href="adding-services.html">
             
@@ -248,7 +248,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Building blocks</a>
+        <a href="." >Adding services</a>
     </h1>
 </div>
 
@@ -263,49 +263,29 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="building-blocks">Building blocks</h1>
-<p>To understand the building blocks better, let&apos;s look at the generated folder structure first</p>
-<h3 id="folder-structure">Folder structure</h3>
-<pre><code>&#x251C;&#x2500;&#x2500; .env
-&#x251C;&#x2500;&#x2500; .env.example
-&#x251C;&#x2500;&#x2500; package.json
-&#x251C;&#x2500;&#x2500; android
-&#x251C;&#x2500;&#x2500; ios
-&#x251C;&#x2500;&#x2500; index.android.js
-&#x251C;&#x2500;&#x2500; index.ios.js
-&#x2514;&#x2500;&#x2500; src
-    &#x251C;&#x2500;&#x2500; app.js
-    &#x251C;&#x2500;&#x2500; components
-    &#x2502;   &#x251C;&#x2500;&#x2500; Home
-    &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; index.js
-    &#x2502;   &#x2514;&#x2500;&#x2500; Routes.js
-    &#x251C;&#x2500;&#x2500; models
-    &#x251C;&#x2500;&#x2500; services
-    &#x2502;   &#x251C;&#x2500;&#x2500; react-native
-    &#x2514;&#x2500;&#x2500; stores
-        &#x251C;&#x2500;&#x2500; domain
-        &#x2514;&#x2500;&#x2500; view
-</code></pre><h3 id="entry-point">Entry point</h3>
-<p><code>app.js</code> is the entry point of your app. Your Reazy app instance is created and all the services are initialized here.</p>
-<h3 id="components">Components</h3>
-<p>The React Native app components will reside inside <code>src/components</code>.</p>
-<h3 id="services">Services</h3>
-<p><code>src/services</code> contains all the custom services of your app. By default, react-native will be there as a service.
-You can create a service for your app inside this folder. </p>
-<p>Know more about services <a href="services/readme.html">here</a>.</p>
-<h3 id="stores">Stores</h3>
-<p>For state management in a Reazy app, <a href="https://mobx.js.org/" target="_blank">MobX</a> is included by default.</p>
-<ul>
-<li><p><code>src/stores/domain</code> contains the domain stores. The data for entities in your app(e.g User, Order, Merchant) will be part of domain stores.</p>
-</li>
-<li><p><code>src/stores/view</code> contains the view stores. The data related to the View layer(like loading status, form fields&apos; value, etc.) will be part of view stores.</p>
-</li>
-</ul>
-<p>Know more about stores <a href="stores/readme.html">here</a>.</p>
-<h3 id="models">Models</h3>
-<p><code>src/models</code> will conatin models for MobX stores</p>
-<h3 id="config">Config</h3>
-<p><code>.env</code> file will be used for storing the config variables. Your app will have a plugin included by default; <a href="https://www.npmjs.com/package/reazy-native-config" target="_blank">reazy-native-config</a>, which helps you set and get the configuration for your app.</p>
+                                <h1 id="adding-services">Adding services</h1>
+<p>Let&apos;s add a new service <code>reazy-auth</code> which is available as a reazy plugin.</p>
+<pre><code class="lang-sh">$ npm install --save reazy-auth
+</code></pre>
+<p>Open <code>src/app.js</code>.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> reazy <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy&apos;</span>;
+<span class="hljs-keyword">import</span> auth <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;reazy-auth&apos;</span>;                    <span class="hljs-comment">// &lt;-- import the service</span>
+<span class="hljs-keyword">import</span> reactNative <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./services/react-native&apos;</span>;
+
+<span class="hljs-keyword">const</span> app = reazy();
+
+app.use(auth(), <span class="hljs-string">&apos;auth&apos;</span>);                          <span class="hljs-comment">// &lt;-- Initialize the service</span>
+app.use(reactNative(), <span class="hljs-string">&apos;reactNative&apos;</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> app;
+</code></pre>
+<p>Some services which are available as npm packages can be added using <a href="https://www.npmjs.com/package/reazy-cli" target="_blank">reazy-cli</a>.</p>
+<pre><code class="lang-sh">reazy add auth
+</code></pre>
+<p>This command will install <code>reazy-auth</code> npm package and also add the above mentioned lines in your <code>app.js</code>.</p>
+<p>If this package doesn&apos;t contain the script to edit your files, the CLI will let you know. This means you will have to import and initialize the service yourself.</p>
+<p><a href="services/readme.html">Learn more and create your own services</a></p>
+<p>Now that we are done with the basic usage, let&apos;s dive into the details.</p>
 
                                 
                                 </section>
@@ -333,12 +313,12 @@ You can create a service for your app inside this folder. </p>
 
             
                 
-                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: Getting started">
+                <a href="building-blocks.html" class="navigation navigation-prev " aria-label="Previous page: Building blocks">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="adding-services.html" class="navigation navigation-next " aria-label="Next page: Adding services">
+                <a href="services/readme.html" class="navigation navigation-next " aria-label="Next page: Services">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -349,7 +329,7 @@ You can create a service for your app inside this folder. </p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building blocks","level":"1.5","depth":1,"next":{"title":"Adding services","level":"1.6","depth":1,"path":"adding-services.md","ref":"adding-services.md","articles":[]},"previous":{"title":"Getting started","level":"1.4","depth":1,"path":"getting-started.md","ref":"getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"building-blocks.md","mtime":"2017-02-14T13:09:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T13:11:09.043Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Adding services","level":"1.6","depth":1,"next":{"title":"Services","level":"1.7","depth":1,"path":"services/readme.md","ref":"services/readme.md","articles":[{"title":"Create a service","level":"1.7.1","depth":2,"path":"services/create-service.md","ref":"services/create-service.md","articles":[]}]},"previous":{"title":"Building blocks","level":"1.5","depth":1,"path":"building-blocks.md","ref":"building-blocks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"adding-services.md","mtime":"2017-02-14T13:04:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-14T13:11:09.043Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

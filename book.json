@@ -22,10 +22,5 @@
         "ga": {
             "token": "UA-87152834-1"
         }
-    },
-    "links": {
-        "custom": {
-            "Custom link name": "https://customlink.com"
-        }
     }
 }
