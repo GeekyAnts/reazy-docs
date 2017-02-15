@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Stores · Reazy</title>
+        <title>reazy-native-config · Reazy</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -63,8 +63,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="reazy-auth.html" />
     
-    <link rel="prev" href="../services/create-service.html" />
     
 
     </head>
@@ -203,9 +203,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8" data-path="readme.html">
+        <li class="chapter " data-level="1.8" data-path="../stores/readme.html">
             
-                <a href="readme.html">
+                <a href="../stores/readme.html">
             
                     
                     Stores
@@ -230,9 +230,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../plugins/reazy-native-config.html">
+        <li class="chapter active" data-level="1.9.1" data-path="reazy-native-config.html">
             
-                <a href="../plugins/reazy-native-config.html">
+                <a href="reazy-native-config.html">
             
                     
                     reazy-native-config
@@ -243,9 +243,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="../plugins/reazy-auth.html">
+        <li class="chapter " data-level="1.9.2" data-path="reazy-auth.html">
             
-                <a href="../plugins/reazy-auth.html">
+                <a href="reazy-auth.html">
             
                     
                     reazy-auth
@@ -256,9 +256,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="../plugins/reazy-native-auth-facebook.html">
+        <li class="chapter " data-level="1.9.3" data-path="reazy-native-auth-facebook.html">
             
-                <a href="../plugins/reazy-native-auth-facebook.html">
+                <a href="reazy-native-auth-facebook.html">
             
                     
                     reazy-native-auth-facebook
@@ -304,7 +304,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Stores</a>
+        <a href=".." >reazy-native-config</a>
     </h1>
 </div>
 
@@ -319,11 +319,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="stores">Stores</h1>
-<p><a href="https://mobx.js.org/" target="_blank">MobX</a> is a simple, scalable state management library which is available by default with Reazy app. We recommend to check out their <a href="https://mobx.js.org/" target="_blank">docs</a> before using this in your Reazy app.</p>
-<p>Data stores in your app should reside in <code>src/stores</code>. There are two types of stores: Domain stores and View stores.</p>
-<p>The data for entities in your app(e.g User, Order, Merchant) will be part of domain stores and the data related to the view layer(like loading status, form fields&apos; value, etc.) will be part of view stores.</p>
-<p>MobX service is there inside <code>src/services/mobx</code> which has a function called <code>getAllStores</code>. This function combines all the stores in your app into a single object. In this object, view stores will be named as <code>&apos;view.storeName&apos;</code> while domain stores will be named <code>&apos;domain.storeName&apos;</code>.</p>
+                                <h1 id="reazy-native-config">reazy-native-config</h1>
+<p>A simple configuration module based on .env for Reazy Native Apps</p>
+<p>This is included in your Reazy app by default.</p>
+<h2 id="usage">Usage</h2>
+<p>This plugin is a wrapper around <a href="https://github.com/luggit/react-native-config" target="_blank">react-native-config</a></p>
+<p>Refer their <a href="https://github.com/luggit/react-native-config" target="_blank">documentation</a> for usage.</p>
+<p>The only change is that instead of importing <code>Config</code> from <code>&apos;react-native-config&apos;</code>, you can get it from Reazy app instance</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> config = app.config;
+</code></pre>
 
                                 
                                 </section>
@@ -351,10 +355,10 @@
 
             
                 
-                <a href="../services/create-service.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Create a service">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="reazy-auth.html" class="navigation navigation-next navigation-unique" aria-label="Next page: reazy-auth">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -363,7 +367,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stores","level":"1.8","depth":1,"next":{"title":"Plugins","level":"1.9","depth":1,"ref":"","articles":[{"title":"reazy-native-config","level":"1.9.1","depth":2,"path":"plugins/reazy-native-config.md","ref":"plugins/reazy-native-config.md","articles":[]},{"title":"reazy-auth","level":"1.9.2","depth":2,"path":"plugins/reazy-auth.md","ref":"plugins/reazy-auth.md","articles":[]},{"title":"reazy-native-auth-facebook","level":"1.9.3","depth":2,"path":"plugins/reazy-native-auth-facebook.md","ref":"plugins/reazy-native-auth-facebook.md","articles":[]}]},"previous":{"title":"Create a service","level":"1.7.1","depth":2,"path":"services/create-service.md","ref":"services/create-service.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"stores/readme.md","mtime":"2017-02-02T11:09:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-15T14:49:38.081Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"reazy-native-config","level":"1.9.1","depth":2,"next":{"title":"reazy-auth","level":"1.9.2","depth":2,"path":"plugins/reazy-auth.md","ref":"plugins/reazy-auth.md","articles":[]},"previous":{"title":"Plugins","level":"1.9","depth":1,"ref":"","articles":[{"title":"reazy-native-config","level":"1.9.1","depth":2,"path":"plugins/reazy-native-config.md","ref":"plugins/reazy-native-config.md","articles":[]},{"title":"reazy-auth","level":"1.9.2","depth":2,"path":"plugins/reazy-auth.md","ref":"plugins/reazy-auth.md","articles":[]},{"title":"reazy-native-auth-facebook","level":"1.9.3","depth":2,"path":"plugins/reazy-native-auth-facebook.md","ref":"plugins/reazy-native-auth-facebook.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["ga","versions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"versions":{"type":"branches","gitbookConfigURL":"http://rawgit.com/GeekyAnts/reazy-docs/master/book.json","options":[{"value":"http://docs.reazyframework.io","text":"latest"},{"value":"http://docs.reazyframework.io","text":"-- select version --","selected":false}]},"ga":{"configuration":"auto","token":"UA-87152834-1"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Reazy","gitbook":"*"},"file":{"path":"plugins/reazy-native-config.md","mtime":"2017-02-15T14:43:45.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-15T14:49:38.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,6 +1,6 @@
 # Getting started
 
-Install Reazy cli
+Install Reazy CLI
 ```sh
 $ npm install -g reazy-cli
 ```
